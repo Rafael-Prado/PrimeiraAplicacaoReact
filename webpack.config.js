@@ -5,30 +5,29 @@ module.exports = {
     entry: './src/index.jsx',
     output: {
         path: __dirname + '/public',
-        filename : './app.js'
+        filename: './app.js'
     },
-    devServer:{
+    devServer: {
         port: 8080,
         contentBase: './public',
     },
     resolve: {
-        extension: ['', '.js', '.jsx'],
+        extensions: ['', '.js', '.jsx'],
         alias: {
             modules: __dirname + '/node_modules'
         }
     },
-    plugin: [
+    plugins: [ 
         new ExtractTextPlugin('app.css')
     ],
-
     module: {
         loaders: [{
             test: /.js[x]?$/,
-            loader:'babel-loader',
+            loader: 'babel-loader',
             exclude: /node_modules/,
             query: {
                 presets: ['es2015', 'react'],
-                plugin: ['transform-object-rest-spread']
+                plugins: ['transform-object-rest-spread']
             }
         }, {
             test: /\.css$/,
@@ -38,5 +37,4 @@ module.exports = {
             loader: 'file'
         }]
     }
-
 }
